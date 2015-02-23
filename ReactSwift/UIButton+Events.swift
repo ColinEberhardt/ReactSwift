@@ -13,7 +13,7 @@ var key: UInt8 = 0
 extension UIButton {
   
   /// An action that is invoked when the button is tapped
-  public var tappedEvent: Event {
+  var tappedEvent: Event {
     get {
       let maybeEvent = objc_getAssociatedObject(self, &key) as Event?
       if let event = maybeEvent {

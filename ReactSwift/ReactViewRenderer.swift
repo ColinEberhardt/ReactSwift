@@ -20,7 +20,7 @@ class ReactViewRenderer {
   
   func render() {
     let reactView = self.component.render()
-    let uiView = reactView.createView();
+    let uiView = createView(reactView);
     
     for subview in hostView.subviews {
       subview.removeFromSuperview()
