@@ -8,9 +8,9 @@
 
 import Foundation
 
-class Event {
+class Event<T> {
   
-  typealias EventHandler = () -> ()
+  typealias EventHandler = T -> ()
   
   private var eventHandlers = [Invocable]()
   
@@ -18,9 +18,9 @@ class Event {
   }
   
   /// Raises the event, invoking all handlers
-  func raise() {
+  func raise(data: T) {
     for handler in self.eventHandlers {
-      handler.invoke()
+      handler.invoke(data)
     }
   }
   
@@ -31,24 +31,24 @@ class Event {
 }
 
 public protocol Invocable: class {
-  func invoke()
+  func invoke(data: Any)
 }
 
 // takes a reference to a handler, as a class method, allowing
 // a weak reference to the owning type.
 // see: http://oleb.net/blog/2014/07/swift-instance-methods-curried-functions/
-public class EventHandlerWrapper<T: AnyObject> : Invocable {
+public class EventHandlerWrapper<T: AnyObject, U> : Invocable {
   weak var target: T?
-  let handler: T -> () -> ()
+  let handler: T -> U -> ()
   
-  init(target: T?, handler: T -> () -> ()){
+  init(target: T?, handler: T -> U -> ()){
     self.target = target
     self.handler = handler
   }
   
-  public func invoke() -> () {
+  public func invoke(data: Any) -> () {
     if let t = target {
-      handler(t)()
+      handler(t)(data as U)
     }
   }
   
