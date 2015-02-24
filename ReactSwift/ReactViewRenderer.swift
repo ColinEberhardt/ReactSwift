@@ -12,6 +12,10 @@ class ReactViewRenderer {
   let hostView: UIView
   let component: ReactComponent
   
+  // we need to retain the most recent view, so that any event handlers
+  // are retained
+  var reactView: ReactView!
+  
   init(hostView: UIView, component: ReactComponent) {
     self.hostView = hostView
     self.component = component
@@ -19,7 +23,7 @@ class ReactViewRenderer {
   }
   
   func render() {
-    let reactView = self.component.render()
+    reactView = self.component.render()
     let uiView = createView(reactView);
     
     for subview in hostView.subviews {

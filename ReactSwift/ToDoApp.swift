@@ -10,29 +10,52 @@ import UIKit
 
 class ToDoApp: ReactComponent {
   
-  var count = 0
+  var count: Int = 0
   
-  func tapped() {
-    count++
+  func changeNumber(newValue: Int) {
+    count = newValue
     renderer.render()
   }
   
   func render() -> ReactView {
     
-    let eventHandler = EventHandlerWrapper(target: self, handler: ToDoApp.tapped)
-    
-    return ReactView.View(CGRect(x: 0, y: 0, width: 100, height: 200),
+    return ReactView.View(CGRect(x: 100, y: 100, width: 200, height: 200),
       [
-        Foo(),
-        ReactView.Text(CGRect(x: 0, y: 50, width: 100, height: 50), "\(count)"),
-        ReactView.Button(CGRect(x: 0, y: 100, width: 100, height: 50), "foo", eventHandler)
+        ReactView.Text(CGRect(x: 50, y: 0, width: 100, height: 50), "\(count)"),
+        Toolbar(frame: CGRect(x: 0, y: 50, width: 100, height: 20), count: count, updateFunc: changeNumber)
       ])
     
   }
 }
 
-class Foo: ReactComponent {
+class Toolbar: ReactComponent {
+  
+  let updateFunc: Int -> ()
+  let count: Int
+  let frame: CGRect
+  
+  init(frame: CGRect, count: Int, updateFunc: Int -> ()) {
+    self.updateFunc = updateFunc
+    self.count = count
+    self.frame = frame
+  }
+  
+  func up() {
+    updateFunc(count + 1)
+  }
+  
+  func down() {
+    updateFunc(count - 1)
+  }
+  
   func render() -> ReactView {
-    return ReactView.Text(CGRect(x: 0, y: 0, width: 100, height: 50), "FECK")
+    let upHandler = EventHandlerWrapper(target: self, handler: Toolbar.up)
+    let downHandler = EventHandlerWrapper(target: self, handler: Toolbar.down)
+    let halfWidth = frame.width / 2
+    
+    return ReactView.View(frame,
+      [ReactView.Button(CGRect(x: 0, y: 0, width: halfWidth, height: frame.height), "up", upHandler),
+      ReactView.Button(CGRect(x: halfWidth, y: 0, width: halfWidth, height: frame.height), "down", downHandler),
+    ])
   }
 }

@@ -22,6 +22,7 @@ func createView(virtualView: ReactView) -> UIView {
   switch virtualView {
   case .View(let frame, let children):
     let view = UIView(frame: frame)
+    //view.backgroundColor = UIColor.greenColor()
     for child in children {
       view.addSubview(createView(child.render()))
     }

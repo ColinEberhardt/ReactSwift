@@ -28,7 +28,6 @@ extension UIButton {
   }
   
   func tapped() {
-    println("tapped")
     tappedEvent.raise()
   }
   
