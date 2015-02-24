@@ -8,10 +8,14 @@
 
 import UIKit
 
-enum ReactView {
-  case View(CGRect, [ReactView])
+enum ReactView: ReactComponent {
+  case View(CGRect, [ReactComponent])
   case Button(CGRect, String, Invocable)
   case Text(CGRect, String)
+  
+  func render() -> ReactView {
+    return self
+  }
 }
 
 func createView(virtualView: ReactView) -> UIView {
@@ -19,7 +23,7 @@ func createView(virtualView: ReactView) -> UIView {
   case .View(let frame, let children):
     let view = UIView(frame: frame)
     for child in children {
-      view.addSubview(createView(child))
+      view.addSubview(createView(child.render()))
     }
     return view
     

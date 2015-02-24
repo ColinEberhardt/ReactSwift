@@ -21,11 +21,18 @@ class ToDoApp: ReactComponent {
     
     let eventHandler = EventHandlerWrapper(target: self, handler: ToDoApp.tapped)
     
-    return .View(CGRect(x: 0, y: 0, width: 100, height: 200),
+    return ReactView.View(CGRect(x: 0, y: 0, width: 100, height: 200),
       [
-        .Text(CGRect(x: 0, y: 0, width: 100, height: 50), "\(count)"),
-        .Button(CGRect(x: 0, y: 50, width: 100, height: 50), "foo", eventHandler)
+        Foo(),
+        ReactView.Text(CGRect(x: 0, y: 50, width: 100, height: 50), "\(count)"),
+        ReactView.Button(CGRect(x: 0, y: 100, width: 100, height: 50), "foo", eventHandler)
       ])
     
+  }
+}
+
+class Foo: ReactComponent {
+  func render() -> ReactView {
+    return ReactView.Text(CGRect(x: 0, y: 0, width: 100, height: 50), "FECK")
   }
 }
