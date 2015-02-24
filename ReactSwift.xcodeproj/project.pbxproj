@@ -13,7 +13,7 @@
 		3CE7F8B31A992B7900B9E79B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CE7F8B21A992B7900B9E79B /* Images.xcassets */; };
 		3CE7F8B61A992B7900B9E79B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CE7F8B41A992B7900B9E79B /* LaunchScreen.xib */; };
 		3CE7F8C21A992B7900B9E79B /* ReactSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE7F8C11A992B7900B9E79B /* ReactSwiftTests.swift */; };
-		3CE7F8CC1A992BA300B9E79B /* ToDoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE7F8CB1A992BA300B9E79B /* ToDoApp.swift */; };
+		3CE7F8CC1A992BA300B9E79B /* CounterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE7F8CB1A992BA300B9E79B /* CounterApp.swift */; };
 		3CE7F8CF1A992BCE00B9E79B /* ReactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE7F8CE1A992BCE00B9E79B /* ReactView.swift */; };
 		3CE7F8D11A992C5C00B9E79B /* ReactViewRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE7F8D01A992C5C00B9E79B /* ReactViewRenderer.swift */; };
 		3CE7F8D31A992C6A00B9E79B /* ReactComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE7F8D21A992C6A00B9E79B /* ReactComponent.swift */; };
@@ -43,7 +43,7 @@
 		3CE7F8BB1A992B7900B9E79B /* ReactSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReactSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CE7F8C01A992B7900B9E79B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3CE7F8C11A992B7900B9E79B /* ReactSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactSwiftTests.swift; sourceTree = "<group>"; };
-		3CE7F8CB1A992BA300B9E79B /* ToDoApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoApp.swift; sourceTree = "<group>"; };
+		3CE7F8CB1A992BA300B9E79B /* CounterApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CounterApp.swift; sourceTree = "<group>"; };
 		3CE7F8CE1A992BCE00B9E79B /* ReactView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactView.swift; sourceTree = "<group>"; };
 		3CE7F8D01A992C5C00B9E79B /* ReactViewRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactViewRenderer.swift; sourceTree = "<group>"; };
 		3CE7F8D21A992C6A00B9E79B /* ReactComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactComponent.swift; sourceTree = "<group>"; };
@@ -100,7 +100,7 @@
 				3CE7F8B21A992B7900B9E79B /* Images.xcassets */,
 				3CE7F8B41A992B7900B9E79B /* LaunchScreen.xib */,
 				3CE7F8A91A992B7900B9E79B /* Supporting Files */,
-				3CE7F8CB1A992BA300B9E79B /* ToDoApp.swift */,
+				3CE7F8CB1A992BA300B9E79B /* CounterApp.swift */,
 			);
 			path = ReactSwift;
 			sourceTree = "<group>";
@@ -245,7 +245,7 @@
 				3CE7F8D71A9A4C1B00B9E79B /* Event.swift in Sources */,
 				3CE7F8CF1A992BCE00B9E79B /* ReactView.swift in Sources */,
 				3CE7F8D31A992C6A00B9E79B /* ReactComponent.swift in Sources */,
-				3CE7F8CC1A992BA300B9E79B /* ToDoApp.swift in Sources */,
+				3CE7F8CC1A992BA300B9E79B /* CounterApp.swift in Sources */,
 				3CE7F8AE1A992B7900B9E79B /* ViewController.swift in Sources */,
 				3CE7F8D51A9A4BD700B9E79B /* UIButton+Events.swift in Sources */,
 				3CE7F8D11A992C5C00B9E79B /* ReactViewRenderer.swift in Sources */,
@@ -441,6 +441,7 @@
 				3CE7F8C71A992B7900B9E79B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3CE7F8C81A992B7900B9E79B /* Build configuration list for PBXNativeTarget "ReactSwiftTests" */ = {
 			isa = XCConfigurationList;
@@ -449,6 +450,7 @@
 				3CE7F8CA1A992B7900B9E79B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

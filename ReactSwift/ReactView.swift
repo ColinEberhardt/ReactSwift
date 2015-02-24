@@ -20,22 +20,21 @@ enum ReactView: ReactComponent {
 
 func createView(virtualView: ReactView) -> UIView {
   switch virtualView {
-  case .View(let frame, let children):
+  case let .View(frame, children):
     let view = UIView(frame: frame)
-    //view.backgroundColor = UIColor.greenColor()
     for child in children {
       view.addSubview(createView(child.render()))
     }
     return view
     
-  case .Button(let frame, let text, let invocable):
+  case let .Button(frame, text, invocable):
     let view = UIButton(frame: frame)
-    view.backgroundColor = UIColor.redColor()
-    view.setTitle(text, forState: UIControlState.Normal)
+    view.setTitleColor(UIColor.blueColor(), forState: .Normal)
+    view.setTitle(text, forState: .Normal)
     view.tappedEvent.addHandler(invocable)
     return view
     
-  case .Text(let frame, let text):
+  case let .Text(frame, text):
     let view = UITextField(frame: frame)
     view.text = text
     return view

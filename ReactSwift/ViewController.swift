@@ -8,20 +8,16 @@
 
 import UIKit
 
-var renderer: ReactViewRenderer!
+var _youCannotSeeMe: ReactViewRenderer!
 
 class ViewController: UIViewController {
 
-  let app = ToDoApp();
-  var timer: NSTimer!
-  var displayLink: CADisplayLink!
-  
-  
+  let app = CounterApp();
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    renderer = ReactViewRenderer(hostView: view, component: app)
+    _youCannotSeeMe = ReactViewRenderer(hostView: view, component: app)
   }
 }
 

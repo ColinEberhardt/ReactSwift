@@ -8,13 +8,14 @@
 
 import UIKit
 
-class ToDoApp: ReactComponent {
+class CounterApp: ReactComponent {
   
   var count: Int = 0
   
   func changeNumber(newValue: Int) {
     count = newValue
-    renderer.render()
+    
+    _youCannotSeeMe.render()
   }
   
   func render() -> ReactView {
