@@ -36,6 +36,38 @@ class ToDoApp: ReactComponent {
   }
 }
 
+class ListItem: ReactComponent {
+  let item: String
+  let frame: CGRect
+  let deleteAction: () -> ()
+  
+  init(frame: CGRect, item: String, deleteAction: () -> ()) {
+    self.frame = frame
+    self.item = item
+    self.deleteAction = deleteAction
+  }
+  
+  func deleteItem() {
+    deleteAction()
+  }
+  
+  deinit {
+    println("I'm gone")
+  }
+  
+  
+  func render() -> ReactView {
+    
+    let addItemHandler = EventHandlerWrapper(target: self, handler: ListItem.deleteItem)
+    
+    return ReactView.View(frame,
+      [
+        ReactView.Text(CGRect(x: 0, y: 0, width: 100, height: 50), item),
+        ReactView.Button(CGRect(x: 50, y: 0, width: 100, height: 50), "x", addItemHandler)
+      ])
+  }
+}
+
 class ListItems: ReactComponent {
   
   let items: [String]
@@ -46,11 +78,19 @@ class ListItems: ReactComponent {
     self.items = items
   }
   
+  func voi() {
+    println("deleted")
+  }
+  
+  deinit {
+    println("I'm gone")
+  }
+  
   func render() -> ReactView {
     var children = [ReactComponent]()
     var offset: CGFloat = 0.0
     for item in items {
-      children.append(ReactView.Text(CGRect(x: 0, y: offset, width: frame.width, height: 50), item))
+      children.append(ListItem(frame: CGRect(x: 0, y: offset, width: frame.width, height: 50), item: item, deleteAction: voi))
       offset += 50
     }
     
