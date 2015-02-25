@@ -32,3 +32,28 @@ extension UIButton {
   }
   
 }
+
+extension UITextField {
+  
+  /// An action that is invoked when the button is tapped
+  var changedEvent: Event<String> {
+    get {
+      let maybeEvent = objc_getAssociatedObject(self, &key) as Event<String>?
+      if let event = maybeEvent {
+        return event
+      } else {
+        let event = Event<String>()
+        addTarget(self, action: "changed", forControlEvents: .EditingChanged)
+        objc_setAssociatedObject(self, &key, event, UInt(OBJC_ASSOCIATION_RETAIN))
+        return event
+      }
+    }
+  }
+  
+  func changed() {
+    changedEvent.raise(self.text)
+  }
+  
+}
+
+

@@ -12,6 +12,7 @@ enum ReactView: ReactComponent {
   case View(CGRect, [ReactComponent])
   case Button(CGRect, String, Invocable)
   case Text(CGRect, String)
+  case TextField(CGRect, String, Invocable)
   
   func render() -> ReactView {
     return self
@@ -35,8 +36,14 @@ func createView(virtualView: ReactView) -> UIView {
     return view
     
   case let .Text(frame, text):
+    let view = UILabel(frame: frame)
+    view.text = text
+    return view
+    
+  case let .TextField(frame, text, invocable):
     let view = UITextField(frame: frame)
     view.text = text
+    view.changedEvent.addHandler(invocable)
     return view
   }
 }

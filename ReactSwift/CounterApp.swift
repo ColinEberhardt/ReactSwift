@@ -8,6 +8,56 @@
 
 import UIKit
 
+class ToDoApp: ReactComponent {
+  
+  var items = ["feed the cat", "adopt swift"]
+  var newItem = ""
+  
+  func textChanged(value: String) {
+    newItem = value
+  }
+  
+  func addItem() {
+    items.append(newItem)
+    _youCannotSeeMe.render()
+  }
+  
+  func render() -> ReactView {
+    
+    let textChangedHandler = EventHandlerWrapper(target: self, handler: ToDoApp.textChanged)
+    let addItemHandler = EventHandlerWrapper(target: self, handler: ToDoApp.addItem)
+    
+    return ReactView.View(CGRect(x: 0, y: 0, width: 300, height: 500),
+      [
+        ReactView.TextField(CGRect(x: 0, y: 0, width: 200, height: 50), "", textChangedHandler),
+        ReactView.Button(CGRect(x: 200, y: 0, width: 100, height: 50), "Add", addItemHandler),
+        ListItems(frame: CGRect(x: 0, y: 100, width: 300, height: 500), items: items)
+      ])
+  }
+}
+
+class ListItems: ReactComponent {
+  
+  let items: [String]
+  let frame: CGRect
+  
+  init(frame: CGRect, items: [String]) {
+    self.frame = frame
+    self.items = items
+  }
+  
+  func render() -> ReactView {
+    var children = [ReactComponent]()
+    var offset: CGFloat = 0.0
+    for item in items {
+      children.append(ReactView.Text(CGRect(x: 0, y: offset, width: frame.width, height: 50), item))
+      offset += 50
+    }
+    
+    return ReactView.View(frame, children)
+  }
+}
+
 class CounterApp: ReactComponent {
   
   var count: Int = 0

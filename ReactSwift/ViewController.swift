@@ -12,7 +12,7 @@ var _youCannotSeeMe: ReactViewRenderer!
 
 class ViewController: UIViewController {
 
-  let app = CounterApp();
+  let app = ToDoApp();
   
   override func viewDidLoad() {
     super.viewDidLoad()
