@@ -19,11 +19,14 @@ enum ReactView: ReactComponent {
   }
 }
 
+var reactComponents = [ReactComponent]()
+
 func createView(virtualView: ReactView) -> UIView {
   switch virtualView {
   case let .View(frame, children):
     let view = UIView(frame: frame)
     for child in children {
+      reactComponents.append(child)
       view.addSubview(createView(child.render()))
     }
     return view
