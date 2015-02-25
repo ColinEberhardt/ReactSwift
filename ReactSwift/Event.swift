@@ -37,8 +37,8 @@ public protocol Invocable: class {
 // takes a reference to a handler, as a class method, allowing
 // a weak reference to the owning type.
 // see: http://oleb.net/blog/2014/07/swift-instance-methods-curried-functions/
-public class EventHandlerWrapper<T: AnyObject, U> : Invocable {
-  weak var target: T?
+public class EventHandlerWrapper<T: Any, U> : Invocable {
+  var target: T?
   let handler: T -> U -> ()
   
   init(target: T?, handler: T -> U -> ()){

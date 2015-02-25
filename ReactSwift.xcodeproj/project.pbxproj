@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C853E8F1A9E612C00E04C4D /* ToDoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C853E8E1A9E612C00E04C4D /* ToDoApp.swift */; };
 		3CE7F8AC1A992B7900B9E79B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE7F8AB1A992B7900B9E79B /* AppDelegate.swift */; };
 		3CE7F8AE1A992B7900B9E79B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE7F8AD1A992B7900B9E79B /* ViewController.swift */; };
 		3CE7F8B11A992B7900B9E79B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CE7F8AF1A992B7900B9E79B /* Main.storyboard */; };
@@ -33,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3C853E8E1A9E612C00E04C4D /* ToDoApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoApp.swift; sourceTree = "<group>"; };
 		3CE7F8A61A992B7900B9E79B /* ReactSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReactSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CE7F8AA1A992B7900B9E79B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3CE7F8AB1A992B7900B9E79B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				3CE7F8B41A992B7900B9E79B /* LaunchScreen.xib */,
 				3CE7F8A91A992B7900B9E79B /* Supporting Files */,
 				3CE7F8CB1A992BA300B9E79B /* CounterApp.swift */,
+				3C853E8E1A9E612C00E04C4D /* ToDoApp.swift */,
 			);
 			path = ReactSwift;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 				3CE7F8D71A9A4C1B00B9E79B /* Event.swift in Sources */,
 				3CE7F8CF1A992BCE00B9E79B /* ReactView.swift in Sources */,
 				3CE7F8D31A992C6A00B9E79B /* ReactComponent.swift in Sources */,
+				3C853E8F1A9E612C00E04C4D /* ToDoApp.swift in Sources */,
 				3CE7F8CC1A992BA300B9E79B /* CounterApp.swift in Sources */,
 				3CE7F8AE1A992B7900B9E79B /* ViewController.swift in Sources */,
 				3CE7F8D51A9A4BD700B9E79B /* UIButton+Events.swift in Sources */,

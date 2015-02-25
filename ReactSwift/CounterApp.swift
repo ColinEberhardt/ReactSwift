@@ -8,100 +8,11 @@
 
 import UIKit
 
-class ToDoApp: ReactComponent {
-  
-  var items = ["feed the cat", "adopt swift"]
-  var newItem = ""
-  
-  func textChanged(value: String) {
-    newItem = value
-  }
-  
-  func itemDeleted(index: Int) {
-    items.removeAtIndex(index)
-    _youCannotSeeMe.render()
-  }
-  
-  func addItem() {
-    items.append(newItem)
-    _youCannotSeeMe.render()
-  }
-  
-  func render() -> ReactView {
-    
-    let textChangedHandler = EventHandlerWrapper(target: self, handler: ToDoApp.textChanged)
-    let addItemHandler = EventHandlerWrapper(target: self, handler: ToDoApp.addItem)
-    
-    return ReactView.View(CGRect(x: 0, y: 0, width: 300, height: 500),
-      [
-        ReactView.TextField(CGRect(x: 0, y: 0, width: 200, height: 50), "", textChangedHandler),
-        ReactView.Button(CGRect(x: 200, y: 0, width: 100, height: 50), "Add", addItemHandler),
-        ListItems(frame: CGRect(x: 0, y: 100, width: 300, height: 500), items: items, deleteAction: itemDeleted)
-      ])
-  }
-}
-
-class ListItem: ReactComponent {
-  let item: String
-  let frame: CGRect
-  let deleteAction: () -> ()
-  
-  init(frame: CGRect, item: String, deleteAction: () -> ()) {
-    self.frame = frame
-    self.item = item
-    self.deleteAction = deleteAction
-  }
-  
-  func deleteItem() {
-    deleteAction()
-  }
-  
-  deinit {
-    println("I'm gone")
-  }
-  
-  
-  func render() -> ReactView {
-    
-    let addItemHandler = EventHandlerWrapper(target: self, handler: ListItem.deleteItem)
-    
-    return ReactView.View(frame,
-      [
-        ReactView.Text(CGRect(x: 0, y: 0, width: 100, height: 50), item),
-        ReactView.Button(CGRect(x: 50, y: 0, width: 100, height: 50), "x", addItemHandler)
-      ])
-  }
-}
-
-class ListItems: ReactComponent {
-  
-  let items: [String]
-  let frame: CGRect
-  let deleteAction: (Int) -> ()
-  
-  init(frame: CGRect, items: [String], deleteAction: (Int) -> ()) {
-    self.frame = frame
-    self.items = items
-    self.deleteAction = deleteAction
-  }
-  
-  func voi() {
-    println("deleted")
-  }
-  
-  func render() -> ReactView {
-    var children = [ReactComponent]()
-    var offset: CGFloat = 0.0
-    for item in enumerate(items) {
-      children.append(ListItem(frame: CGRect(x: 0, y: offset, width: frame.width, height: 50), item: item.element) {
-        self.deleteAction(item.index)
-      })
-      offset += 50
-    }
-    
-    return ReactView.View(frame, children)
-  }
-}
+let outerFrame = CGRect(x: 100, y: 100, width: 200, height: 200)
+let countFrame = CGRect(x: 50, y: 0, width: 100, height: 50)
+let spinControlFrame = CGRect(x: 0, y: 50, width: 100, height: 20)
+let upButtonFrame = CGRect(x: 50, y: 0, width: 50, height: 20)
+let downButtonFrame = CGRect(x: 0, y: 0, width: 50, height: 20)
 
 class CounterApp: ReactComponent {
   
@@ -114,27 +25,19 @@ class CounterApp: ReactComponent {
   }
   
   func render() -> ReactView {
-    
-    return ReactView.View(CGRect(x: 100, y: 100, width: 200, height: 200),
+    return ReactView.View(outerFrame,
       [
-        ReactView.Text(CGRect(x: 50, y: 0, width: 100, height: 50), "\(count)"),
-        Toolbar(frame: CGRect(x: 0, y: 50, width: 100, height: 20), count: count, updateFunc: changeNumber)
+        ReactView.Text(countFrame, "\(count)"),
+        Toolbar(frame: spinControlFrame, count: count, updateFunc: changeNumber)
       ])
-    
   }
 }
 
-class Toolbar: ReactComponent {
+struct Toolbar: ReactComponent {
   
-  let updateFunc: Int -> ()
-  let count: Int
   let frame: CGRect
-  
-  init(frame: CGRect, count: Int, updateFunc: Int -> ()) {
-    self.updateFunc = updateFunc
-    self.count = count
-    self.frame = frame
-  }
+  let count: Int
+  let updateFunc: Int -> ()
   
   func up() {
     updateFunc(count + 1)
@@ -147,11 +50,10 @@ class Toolbar: ReactComponent {
   func render() -> ReactView {
     let upHandler = EventHandlerWrapper(target: self, handler: Toolbar.up)
     let downHandler = EventHandlerWrapper(target: self, handler: Toolbar.down)
-    let halfWidth = frame.width / 2
     
     return ReactView.View(frame,
-      [ReactView.Button(CGRect(x: 0, y: 0, width: halfWidth, height: frame.height), "up", upHandler),
-      ReactView.Button(CGRect(x: halfWidth, y: 0, width: halfWidth, height: frame.height), "down", downHandler),
+      [ReactView.Button(upButtonFrame, "up", upHandler),
+      ReactView.Button(downButtonFrame, "down", downHandler),
     ])
   }
 }
