@@ -8,7 +8,7 @@
 
 import UIKit
 
-let outerFrame = CGRect(x: 100, y: 100, width: 200, height: 200)
+let outerFrame = CGRect(x: 100, y: 100, width: 100, height: 70)
 let countFrame = CGRect(x: 50, y: 0, width: 100, height: 50)
 let spinControlFrame = CGRect(x: 0, y: 50, width: 100, height: 20)
 let upButtonFrame = CGRect(x: 50, y: 0, width: 50, height: 20)
