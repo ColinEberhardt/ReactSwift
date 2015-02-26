@@ -56,11 +56,6 @@ class ListItem: ReactComponent {
     deleteAction()
   }
   
-  deinit {
-    println("I'm gone")
-  }
-  
-  
   func render() -> ReactView {
     
     let addItemHandler = EventHandlerWrapper(target: self, handler: ListItem.deleteItem)
